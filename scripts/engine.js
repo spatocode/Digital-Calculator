@@ -41,4 +41,7 @@ var engine =  {
         
         $('#currentValue').html(itemDisplay)
     },
+    operate: () => {
+        
+    }
 }
