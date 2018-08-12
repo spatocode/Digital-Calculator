@@ -1,6 +1,7 @@
 var body = document.querySelector("body")
 var display = document.getElementById("display");
 
+var numBtn = document.getElementsByClassName("num-btn")
 var equals = document.getElementById("equals")
 var add = document.getElementById("add")
 var minus = document.getElementById("minus")
@@ -11,6 +12,13 @@ var sq = document.getElementById("x2");
 var cu = document.getElementById("x3");
 var sqRt = document.getElementById("sqrt");
 var xneg = document.getElementById("xneg");
+
+var del = document.getElementById("del")
+var c = document.getElementById("c-btn")
+var ce = document.getElementById("ce-btn")
+var point = document.getElementById("point")
+var negate = document.getElementById("negate")
+var point = document.getElementById("point")
 
 var err = document.createElement("p");
 
@@ -23,8 +31,8 @@ var itemDisplay = [] ,
     itemClicked
 
 var engine =  {
-    numInput: () => {
-        var itemClicked = this.textContent
+    numInput: (e) => {
+        var itemClicked = e.target.textContent
     
         if (itemDisplay.length < 17) {
             if(typeof itemDisplay[0] !== "number")
@@ -42,7 +50,23 @@ var engine =  {
         $('#currentValue').html(itemDisplay)
     },
     operate: () => {
-        
+        let we = itemDisplay.join("")
+        let ter
+        calc.innerHTML.includes("+") ? ter = parseFloat(joinItems) + parseFloat(we) :
+        calc.innerHTML.includes("-") ? ter = parseFloat(joinItems) - parseFloat(we) :
+        calc.innerHTML.includes("*") ? ter = parseFloat(joinItems) * parseFloat(we) :
+        calc.innerHTML.includes("/") ? ter = parseFloat(joinItems) / parseFloat(we) :
+        ter
+        while(itemDisplay.length > 0) {
+            itemDisplay.pop()
+            $('#currentValue').html(itemDisplay)
+        }
+
+        itemDisplay.push(ter)
+        err.textContent = ""
+
+        $('#calc').html("")
+        $('#currentValue').html(itemDisplay)
     },
     addition: () => {
         joinItems= itemDisplay.join("")
@@ -99,8 +123,6 @@ var engine =  {
 
         if (cube.toString().length >= 21)
         $('#currentValue').css({"font-size":"26px","position":"absolute","top":"18px"})
-
-        console.log(cube.toString().length)
 
         $('#calc').html(`Cube(${joinItems})`)
         $('#currentValue').html(itemDisplay)
@@ -226,3 +248,21 @@ var engine =  {
         }
     }
 }
+
+for(var i = 0; i < numBtn.length; i++) {
+    numBtn[i].addEventListener('click', engine.numInput)
+}
+equals.addEventListener('click',engine.operate)
+add.addEventListener('click',engine.addition)
+minus.addEventListener('click',engine.subtract)
+mult.addEventListener('click',engine.multiply)
+div.addEventListener('click',engine.division)
+sq.addEventListener('click',engine.square)
+cu.addEventListener('click',engine.cube)
+sqRt.addEventListener('click',engine.squareRoot)
+xneg.addEventListener('click',engine.negative)
+negate.addEventListener('click',engine.negate)
+point.addEventListener('click',engine.point)
+del.addEventListener('click',engine.delete)
+ce.addEventListener('click',engine.CE)
+c.addEventListener('click',engine.C)

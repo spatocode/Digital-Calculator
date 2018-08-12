@@ -1,6 +1,7 @@
 body{
     margin: 0 auto;
     padding: 0;
+    background-color: rgb(252, 4, 178);
 }
 #calculator{
     width: 325px;
