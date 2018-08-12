@@ -1,0 +1,98 @@
+body{
+    margin: 0 auto;
+    padding: 0;
+}
+#calculator{
+    width: 325px;
+    height: 540px;
+    background-color: grey;
+    position: absolute;
+    left: 37%;
+    top: 10%;
+    border: 2px solid black;
+    box-shadow: -7px 7px 7px rgb(221, 221, 221);
+}
+h2{
+    color: rgb(87, 4, 136);
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+#top-button{
+    position: absolute;
+    left: 230px;
+    top: 4px;
+}
+#minimize, #close{
+    width: 40px;
+}
+#close:hover{
+    background-color: rgb(248, 63, 63);
+}
+#minimize:hover{
+    background-color: rgb(197, 193, 193);
+}
+#display{
+    background-color: antiquewhite;
+    height: 130px;
+}
+#para{
+    position: absolute;
+    top: 114px;
+}
+#currentValue{
+    font-size: 46px;
+}
+#buttons{
+    background-color: grey;
+    height: 351px;
+}
+.func-btn, .num-btn{
+    width: 76.8px;
+    height: 50px;
+    position: relative;
+    top: 25px;
+    font-size: 22px;  
+}
+.func-btn:hover, .num-btn:hover{
+    background-color: rgb(197, 193, 193);
+}
+#dev{
+    color: rgb(109, 185, 247);
+    text-align: center;
+    position: relative;
+    top: 30px;
+}
+#close-panel{
+    background-color: rgb(130, 4, 248);
+    width: 350px;
+    height: 100px;
+    position: absolute;
+    top: 35%;
+    left: 37%;
+}
+#close-text{
+    font-size: 20px;
+    text-align: center;
+    color: aliceblue;
+}
+#btnCon{
+    text-align: center;
+}
+#startBtn{
+    border-radius: 4px;
+}
+#error{
+    position: absolute;
+    top: 9%;
+    font-size: 10px;
+    left: 220px;
+    color: red
+}
+#calc{
+    position: absolute;
+    top: 9%;
+    font-size: 18px;
+    opacity: 0.8;
+}
+sup, sub{
+    font-size: 14px;
+}
