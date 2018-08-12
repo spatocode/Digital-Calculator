@@ -21,3 +21,24 @@ display.appendChild(err);
 var itemDisplay = [] , 
     joinItems,
     itemClicked
+
+var engine =  {
+    numInput: () => {
+        var itemClicked = this.textContent
+    
+        if (itemDisplay.length < 17) {
+            if(typeof itemDisplay[0] !== "number")
+            itemDisplay.push(itemClicked)
+        }
+
+        if (itemDisplay.length >= 14)
+        $('#currentValue').css({"font-size":"36px","position":"absolute","top":"13px"})
+
+        if(itemDisplay.length == 17) {
+        err.textContent = "Maximum value of 16";
+        throw new Error("Maximum value of 16");
+        }
+        
+        $('#currentValue').html(itemDisplay)
+    },
+}
