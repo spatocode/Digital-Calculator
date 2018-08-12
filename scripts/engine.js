@@ -187,5 +187,42 @@ var engine =  {
 
         $('#currentValue').html(itemDisplay)
     },
+    delete: () => {
+        itemDisplay.pop()
+        $('#currentValue').html(itemDisplay)
+        err.textContent = ""
+    },
+    CE: () => {
+        while(itemDisplay.length > 0) {
+            itemDisplay.pop()
+            $('#currentValue').html(itemDisplay)
+        }
     
+        err.textContent = ""
+    },
+    C: () => {
+        while(itemDisplay.length > 0) {
+            itemDisplay.pop()
+            $('#currentValue').html(itemDisplay)
+        }
+    
+        err.textContent = ""
+        $('#calc').html("")
+    },
+    point: () => {
+        if(itemDisplay.length < 17) {
+            if(itemDisplay.length !== 0) {
+                if(!itemDisplay.includes('.'))
+                itemDisplay.push('.')
+                $('#currentValue').html(itemDisplay)
+            }
+        }
+    },
+    negate: () => {
+        if(itemDisplay.length !== 0) {
+            if(!itemDisplay.includes('-'))
+            itemDisplay.unshift('-')
+            $('#currentValue').html(itemDisplay)
+        }
+    }
 }
