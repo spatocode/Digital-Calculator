@@ -30,7 +30,9 @@ var itemDisplay = [] ,
     joinItems,
     itemClicked
 
+//All functionalities of the calculator engine
 var engine =  {
+    //Number input functionality
     numInput: (e) => {
         var itemClicked = e.target.textContent
     
@@ -49,6 +51,7 @@ var engine =  {
         
         $('#currentValue').html(itemDisplay)
     },
+    //"Equals" logic
     operate: () => {
         let we = itemDisplay.join("")
         let ter
@@ -68,6 +71,7 @@ var engine =  {
         $('#calc').html("")
         $('#currentValue').html(itemDisplay)
     },
+    //Addition input logic
     addition: () => {
         joinItems= itemDisplay.join("")
         while(itemDisplay.length > 0) {
@@ -76,6 +80,7 @@ var engine =  {
         }
         $('#calc').html(`${joinItems} +`)
     },
+    //Division input logic
     division: () => {
         joinItems= itemDisplay.join("")
         while(itemDisplay.length > 0) {
@@ -84,6 +89,7 @@ var engine =  {
         }
         $('#calc').html(`${joinItems} /`)
     },
+    //Multiplication input logic
     multiply: () => {
         joinItems= itemDisplay.join("")
         while(itemDisplay.length > 0) {
@@ -92,6 +98,7 @@ var engine =  {
         }
         $('#calc').html(`${joinItems} *`)
     },
+    //Subtraction input logic
     subtract: () => {
         joinItems= itemDisplay.join("")
         while(itemDisplay.length > 0) {
@@ -100,6 +107,7 @@ var engine =  {
         }
         $('#calc').html(`${joinItems} -`)
     },
+    //Raising a number to cube
     cube: () => {
         joinItems = itemDisplay.join("")
         let cube = Math.pow(joinItems, 3)
@@ -154,6 +162,7 @@ var engine =  {
         $('#calc').html(`1/(${joinItems})`)
         $('#currentValue').html(itemDisplay)
     },
+    //Squaring a number
     square: () => {
         joinItems = itemDisplay.join("")
         var square = Math.pow(joinItems, 2)
@@ -166,6 +175,7 @@ var engine =  {
         itemDisplay.push(square)
         err.textContent = ""
 
+        //controlling display
         if (square.toString().length >= 14)
         $('#currentValue').css({"font-size":"36px","position":"absolute","top":"13px"})
 
@@ -193,6 +203,7 @@ var engine =  {
         itemDisplay.push(squareRt)
         err.textContent = ""
 
+        //controlling display
         if (squareRt.toString().length > 14)
         $('#currentValue').css({"font-size":"36px","position":"absolute","top":"13px"})
 
@@ -249,6 +260,7 @@ var engine =  {
     }
 }
 
+//Adding listeners to the DOM
 for(var i = 0; i < numBtn.length; i++) {
     numBtn[i].addEventListener('click', engine.numInput)
 }
@@ -266,3 +278,34 @@ point.addEventListener('click',engine.point)
 del.addEventListener('click',engine.delete)
 ce.addEventListener('click',engine.CE)
 c.addEventListener('click',engine.C)
+
+//Open and close application
+$("#close").click(function(){$("#calculator").fadeOut("slow", function(){
+    var closePanel = document.createElement("div");
+    var closeText = document.createElement("p");
+
+    var btnCon = document.createElement("div");
+    var restart = document.createElement("a");
+    var startBtn = document.createElement("button");
+
+    closePanel.setAttribute("id","close-panel");
+    closeText.setAttribute("id","close-text");
+
+    btnCon.setAttribute("id","btnCon");
+    restart.setAttribute("href","index.html");
+    startBtn.setAttribute("id","startBtn");
+
+    closeText.textContent = "Thank you for using Nogid calculator";
+    startBtn.textContent = "Start again";
+
+    body.appendChild(closePanel);
+    closePanel.appendChild(closeText);
+    closePanel.appendChild(btnCon);
+    
+    btnCon.appendChild(restart);
+    restart.appendChild(startBtn);
+});});
+
+$("#startBtn").click(function(){$("#closePanel").fadeOut("slow", function(){
+    $("#calculator").fadeIn();
+})});
